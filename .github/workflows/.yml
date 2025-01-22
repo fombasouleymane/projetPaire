@@ -1,0 +1,25 @@
+name: Deploy Static HTML Page
+
+on:
+  push:
+    branches:
+      - main  # Changez selon la branche que vous utilisez (par exemple "master")
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "overhaul"
+          git config --global user.email "souleymane.fomba7578@gmail.com" 
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main  
+          folder: .
